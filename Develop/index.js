@@ -1,4 +1,4 @@
-const inquirer = require("inquier");
+const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js")
 
@@ -78,7 +78,7 @@ const questions = [
 // function for Readme
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
-        if (error) {
+        if (err) {
             throw error;
         }
         console.log("file created!");
@@ -88,12 +88,11 @@ function writeToFile(fileName, data) {
 
 // function to init program
 function init() {
-   inquier.prompt(questions).then((responce) => {
+   inquirer.prompt(questions).then((responce) => {
     const markDown = generateMarkdown(response);
     console.log(markdown); 
-    writeFile("READMe.md", markdown);
+    writeToFile("READMe.md", markdown);
    });
-
 }
 
 // function call to init program

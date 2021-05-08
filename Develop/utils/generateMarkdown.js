@@ -21,7 +21,6 @@ function renderLicenseBadge(license) {
       "[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)";
     return license;
   }
-
   else if (license == "None" || license == null) {
     license = " ";
     return license;
@@ -31,9 +30,11 @@ function renderLicenseBadge(license) {
 
 
 
-function generateMarkdown(reponse) {
-  return `
-# ${response.title}
+function generateMarkdown(response) {
+  return `# ${response.title}
+  ${renderLicenseBadge(response.license)}
+  ## Desciption:
+    ${response.description}
 
 #Table of Contents(#table-of-contents)
 
@@ -41,37 +42,45 @@ function generateMarkdown(reponse) {
 -[Installation](#instuction)
 -[usage](#usage)
 -[test](#test)
--[contribution](#contribution)
+-[contributing](#contributing)
 -[Credits](#Credits)    
 -[License](#License)
 -[questions](#questions)
 
 
-## Desciption:
-![License](https://img.shields.io/badge/Licence-${response.licence}-blue.svg "License Badge")
+  ## Desciption:
+    ${response.description}
 
-  ${response.description}
-## Installation:
+
+  ## Installation:
   ${response.Installation}
-## usage:
-  ${response.usage}
-## Contributon:
-  ${response.contribution}
-## Test:
-  ${response.test}
-## Credits:
-  ${response.credit}
-## License:
-This application is covered under the ${response.license}
- license. To learn more about the the ${response.license} 
- license, click on ${renderLicenseBadge(response.license)}
 
-## Questions:
+
+  ## usage:
+  ${response.usage}
+
+
+  ## Contributing
+  ${response.Contributing}
+
+  ## Test:
+  ${response.test}
+
+  ## Credits:
+  ${response.credit}
+
+  ## License:
+  This application is covered under the ${response.license}
+  license. To learn more about the the ${response.license} 
+  license, click on ${renderLicenseBadge(response.license)}
+
+
+ ## Questions:
   For any questions, go to my GitHub page down below:
 
   [GitHub/${response.githubUsername}](https://github.com/${response.githubUsername})
 
-### [Return to the Table of Contents](#table-of-contents)`;
+  ### [Return to the Table of Contents](#table-of-contents)`;
 }
 
 module.exports = generateMarkdown;
